@@ -3,7 +3,6 @@
     flex-direction: column;
     width: fit-content;
     height: auto;
-    background-color: #b5c9fc;
 }
 
 .payment-header{
@@ -121,4 +120,18 @@
     position: absolute;
     white-space: nowrap;
     width: 1px;
+}
+
+#payment-btn{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
 }

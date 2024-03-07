@@ -60,6 +60,7 @@
             </label>
         </div>
     </div>
+    <button class="payment-btn" id="payment-btn">Proceed to payment</button>
 </body>
 
 </html>
