@@ -2,6 +2,7 @@
   --payment-blue: #2260ff;
   --payment-border: #b5bfd9;
   --payment-green: #1aa06d;
+  --payment-red: #ff0000;
 }
 
 html {
@@ -11,26 +12,88 @@ html {
 }
 
 body {
-  height: 100%;
   margin: 0;
   padding: 0;
+  height: 100%;
+}
+
+.payment-wrapper{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.payment-header-div{
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px 15px 30px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-header-div span{
+  font-size: 22px;
+  font-weight: bolder;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cancel-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: var(--payment-red);
+  outline: 3px var(--payment-red) solid;
+  outline-offset: -3px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: 400ms;
+}
+
+.cancel-button .cancel-text {
+  color: white;
+  font-weight: 700;
+  font-size: 1em;
+  transition: 400ms;
+}
+
+.cancel-button:hover {
+  background-color: transparent;
+}
+
+.cancel-button:hover .cancel-text {
+  color: var(--payment-red);
 }
 
 .main-div {
+  height: 100%;
   display: flex;
   justify-content: space-between;
-  height: 100%;
+  margin: 0;
 }
 
 .left-div {
   display: flex;
+  padding: 15px;
+  width: 70%;
+  justify-content: end;
+}
+
+.left-form-container{
+  display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
 }
 
 .payment-method-div {
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  width: 95%;
   height: auto;
   padding: 15px;
 }
@@ -42,10 +105,13 @@ body {
 }
 
 .radio-inputs {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto); /* You can adjust 'auto' to set row height as needed */
+  gap: 10px; /* Adjust the gap as needed */
   justify-content: center;
   align-items: center;
-  width: fit-content;
+  width: 100%;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -78,7 +144,7 @@ body {
 
 .radio-input:focus+.radio-tile {
   border-color: var(--payment-blue);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px #b5c9fc;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .radio-input:focus+.radio-tile:before {
@@ -91,7 +157,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: max-content;
+  width: 95%;
   min-width: 150px;
   min-height: 80px;
   border-radius: 0.5rem;
@@ -153,10 +219,12 @@ body {
   width: 1px;
 }
 
-.rigth-div {
+.right-div {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 15px;
+  width: 30%;
 }
 
 .payment-summary-div {
@@ -170,6 +238,7 @@ body {
   flex-direction: column;
   padding: 15px;
   min-width: 300px;
+  width: 100%;
   height: fit-content;
   border-radius: 0.5rem;
   border: 2px solid var(--payment-border);
@@ -244,6 +313,10 @@ body {
   margin-top: 2px;
 }
 
+.recipient-detail-div{
+  width: 100%;
+}
+
 .recipient-div {
   padding: 15px 15px 0px 15px;
   width: auto;
@@ -286,6 +359,7 @@ body {
   outline: 0;
   width: 95%;
   background-color: transparent;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .form .group textarea {
@@ -348,7 +422,7 @@ body {
   display: flex;
   margin-left: auto;
   margin-right: auto;
-  background-color: #e2feee;
+  background-color: #baffd8;
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
