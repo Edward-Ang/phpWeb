@@ -74,16 +74,17 @@ body {
   display: flex;
   justify-content: space-between;
   margin: 0;
+  background-color: #f3f3f3;
 }
 
 .left-div {
   display: flex;
-  padding: 15px;
+  padding: 15px 0px 15px 15px;
   width: 70%;
-  justify-content: end;
+  justify-content: space-between;
 }
 
-.left-form-container{
+.form-container{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -93,9 +94,9 @@ body {
 .payment-method-div {
   display: flex;
   flex-direction: column;
-  width: 95%;
+  width: 100%;
   height: auto;
-  padding: 15px;
+  padding: 15px 0px 15px 0px;
 }
 
 .payment-header {
@@ -219,6 +220,46 @@ body {
   width: 1px;
 }
 
+.order-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 50%;
+  margin: 15px 30px 15px 15px;
+  padding: 15px;
+  border-radius: 0.5rem;
+  border: 2px solid var(--payment-border);
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-container-header{
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.order-image-container{
+  width: 99%;
+  height: 50%;
+  border: 2px solid var(--payment-border);
+}
+
+.order-container-body{
+  width: max-content;
+  height: 40%;
+  width: 99%;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.order-price-quantity-div{
+  display: flex;
+  justify-content: space-between;
+}
+
 .right-div {
   display: flex;
   flex-direction: column;
@@ -251,7 +292,8 @@ body {
 }
 
 .payment-summary-header span,
-.payment-summary-footer span {
+.payment-summary-footer span,
+.order-container span {
   font-size: 20px;
   font-weight: bolder;
   font-family: Arial, Helvetica, sans-serif;
@@ -318,7 +360,7 @@ body {
 }
 
 .recipient-div {
-  padding: 15px 15px 0px 15px;
+  padding: 15px 0px 15px 0px;
   width: auto;
   display: flex;
   flex-direction: column;
@@ -345,7 +387,7 @@ body {
   position: absolute;
   top: -9px;
   left: 10px;
-  background-color: #fff;
+  background-color: #f3f3f3;
   transition: all .3s ease;
 }
 
@@ -358,7 +400,7 @@ body {
   margin-bottom: 15px;
   outline: 0;
   width: 95%;
-  background-color: transparent;
+  background-color: #fff;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -377,11 +419,16 @@ body {
   border-color: var(--payment-blue);
 }
 
+.form .group input:not(:placeholder-shown),
+.form .group textarea:not(:placeholder-shown) {
+  border-color: var(--payment-blue);
+}
+
 .form .group input:focus+label,
 .form .group textarea:focus+label {
   top: -9px;
   left: 10px;
-  background-color: #fff;
+  background-color: #f3f3f3;
   color: var(--payment-blue);
   font-size: 14px;
 }

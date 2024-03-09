@@ -12,7 +12,7 @@ echo "Hello World";
 </head>
 
 <body>
-    <a href="payment.php" class="button-link">Visit Example</a>
+    <a href="payment.php" class="button-link">Checkout</a>
 </body>
 
 </html>

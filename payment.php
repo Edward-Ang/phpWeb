@@ -64,7 +64,24 @@ if($result){
         </div>
         <div class="main-div">
             <div class="left-div">
-                <div class="left-form-container">
+                <div class="order-container">
+                    <div class="order-container-header">
+                        <span>Order Details</span>
+                    </div>
+                    <div class="order-image-container">
+
+                    </div>
+                    <div class="order-container-body">
+                        <div class="order-name-div">
+                            <span>Product Name</span>
+                        </div>
+                        <div class="order-price-quantity-div">
+                            <span>RM 20.69</span>
+                            <span>Qty. 1</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-container">
                     <div class="recipient-detail-div">
                         <div class="recipient-div">
                             <span class="recipient-title">Recipient Details</span>
@@ -208,7 +225,24 @@ else{ ?>
         </div>
         <div class="main-div">
             <div class="left-div">
-                <div class="left-form-container">
+                <div class="order-container">
+                    <div class="order-container-header">
+                        <span>Order Details</span>
+                    </div>
+                    <div class="order-image-container">
+
+                    </div>
+                    <div class="order-container-body">
+                        <div class="order-name-div">
+                            <span>Product Name</span>
+                        </div>
+                        <div class="order-price-quantity-div">
+                            <span>RM 20.69</span>
+                            <span>Qty. 1</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-container">
                     <div class="recipient-detail-div">
                         <div class="recipient-div">
                             <span class="recipient-title">Recipient Details</span>
