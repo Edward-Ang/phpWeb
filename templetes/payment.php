@@ -5,10 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Website</title>
-    <link rel="stylesheet" href="css/payment.css">
+    <link rel="stylesheet" href="../css/payment.css">
     <script src="https://kit.fontawesome.com/d7d8d20a77.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="scripts/payment.js"></script>
 </head>
 
 <body>
