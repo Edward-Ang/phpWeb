@@ -11,8 +11,13 @@ echo "Hello World";
     <title>Your Website</title>
 </head>
 
-<body>
-    <a href="payment.php" class="button-link">Checkout</a>
+<body><?php
+    require('database.php');
+    $sql_query = "SELECT * FROM order_table WHERE id = 1";
+    $result = mysqli_query($con, $sql_query);
+    $row = mysqli_fetch_assoc($result)?>
+
+    <a href="payment.php?id=<?php echo $row["id"]; ?>" class="button-link">Checkout</a>
 </body>
 
 </html>

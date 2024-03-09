@@ -14,6 +14,7 @@
 <body>
     <?php
 require('database.php');
+
 if (isset($_REQUEST['name'])){
 $name = stripslashes($_REQUEST['name']);
 $name = mysqli_real_escape_string($con,$name);
@@ -215,7 +216,22 @@ if($result){
     <?php 
     }
 }
-else{ ?>
+else{ 
+    $id = $_GET['id'];
+
+    $sql_query = "SELECT * FROM order_table WHERE id = $id";
+    $order_result = mysqli_query($con,$sql_query);
+    $row = mysqli_fetch_assoc($order_result);
+
+    $product_name = $row['product_name'];
+    $product_price = $row['product_price'];
+    $product_quantity = $row['product_quantity'];
+    $subtotal = $product_price * $product_quantity;
+    $shipping = 5;
+    $tax = round($subtotal * 0.1, 2);   
+    $total = $subtotal + $shipping + $tax;
+
+    ?>
     <div class="payment-wrapper">
         <div class="payment-header-div">
             <span>Checkout</span>
@@ -234,11 +250,11 @@ else{ ?>
                     </div>
                     <div class="order-container-body">
                         <div class="order-name-div">
-                            <span>Product Name</span>
+                            <span><?php echo $product_name ?></span>
                         </div>
                         <div class="order-price-quantity-div">
-                            <span>RM 20.69</span>
-                            <span>Qty. 1</span>
+                            <span>RM <?php echo $product_price ?></span>
+                            <span><span id="qty">Qty.</span> <?php echo $product_quantity ?></span>
                         </div>
                     </div>
                 </div>
@@ -340,28 +356,28 @@ else{ ?>
                         <div class="payment-summary-body">
                             <div class="price-row">
                                 <span>Price</span>
-                                <span>RM 20.69</span>
+                                <span>RM <?php echo $product_price ?></span>
                             </div>
                             <div class="quantity-row">
                                 <span>Quantity</span>
-                                <span>x1</span>
+                                <span>x <?php echo $product_quantity ?></span>
                             </div>
                             <div class="subtotal-row">
                                 <span>Subtotal</span>
-                                <span>RM 20.69</span>
+                                <span>RM <?php echo $subtotal ?></span>
                             </div>
                             <div class="shipping-row">
                                 <span>Shipping</span>
                                 <span>RM 5.00</span>
                             </div>
                             <div class="tax-row">
-                                <span>Tax</span>
-                                <span>RM 2.00</span>
+                                <span>Tax (10%)</span>
+                                <span>RM <?php echo $tax ?></span>
                             </div>
                         </div>
                         <div class="payment-summary-footer">
                             <span>Total</span>
-                            <span>RM 27.69</span>
+                            <span>RM <?php echo $total ?></span>
                         </div>
                         <div class="payment-btn-div">
                             <button class="payment-btn" id="payment-btn" type="submit">Confirm To Pay &nbsp<i

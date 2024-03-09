@@ -554,3 +554,8 @@ body {
     transform: scale(1.09);
   }
 }
+
+#qty{
+  font-size: 12px;
+  font-weight: 700;
+}
