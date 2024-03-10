@@ -17,7 +17,7 @@ echo "Hello World";
     $result = mysqli_query($con, $sql_query);
     $row = mysqli_fetch_assoc($result)?>
 
-    <a href="payment.php?id=<?php echo $row["id"]; ?>" class="button-link">Checkout</a>
+    <a href="payment.php?id=<?php echo $row["id"]; ?>" class="button-link">Checkout Button</a>
 </body>
 
 </html>
