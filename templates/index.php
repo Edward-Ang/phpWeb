@@ -12,10 +12,10 @@ echo "Hello World";
 </head>
 
 <body><?php
-    require('database.php');
-    $sql_query = "SELECT * FROM order_table WHERE id = 1";
-    $result = mysqli_query($con, $sql_query);
-    $row = mysqli_fetch_assoc($result)?>
+        require('database.php');
+        $sql_query = "SELECT * FROM order_table WHERE id = 1";
+        $result = mysqli_query($con, $sql_query);
+        $row = mysqli_fetch_assoc($result) ?>
 
     <a href="payment.php?id=<?php echo $row["id"]; ?>" class="button-link">Checkout Button</a>
 </body>
