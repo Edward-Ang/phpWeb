@@ -229,28 +229,36 @@ body {
   align-items: center;
   width: 50%;
   margin: 15px 30px 15px 15px;
+  height: 80vh;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .order-container-header{
   font-size: 18px;
   margin-bottom: 15px;
   width: 100%;
+  position: sticky;
+  top: -1px;
+  background-color: #f3f3f3;
 }
 
 .order-container-body{
-  width: 100%;
-  height: 30%;
-  width: 99%;
+  height: 20%;
+  min-height: 108px;
+  width: 93%;
   display: flex;
   justify-content: space-between;
+  padding: 15px;
   border-radius: 0.5rem;
   border: 2px solid var(--payment-border);
   background-color: var(--payment-white);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
 }
 
 .order-container-left{
-  width: 30%;
+  width: 27%;
   height: 100%;
   border: 2px solid var(--payment-border);
 }
@@ -259,11 +267,17 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 65%;
+}
+
+.order-name-div{
+  font-size: 20px;
 }
 
 .order-price-quantity-div{
   display: flex;
   justify-content: space-between;
+  font-size: 20px;
 }
 
 .right-div {
@@ -308,8 +322,6 @@ body {
   flex-direction: column;
 }
 
-.price-row,
-.quantity-row,
 .subtotal-row,
 .shipping-row,
 .tax-row {
@@ -318,8 +330,6 @@ body {
   margin-bottom: 10px;
 }
 
-.price-row span,
-.quantity-row span,
 .subtotal-row span,
 .shipping-row span,
 .tax-row span {
@@ -562,4 +572,25 @@ body {
 #qty{
   font-size: 12px;
   font-weight: 700;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--card_black);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--border_gray);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border_gray);
 }

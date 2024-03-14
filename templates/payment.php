@@ -69,7 +69,6 @@ VALUES ('$name', '$contact', '$address', '$method')";
                             </div>
                             <div class="order-container-body">
                                 <div class="order-container-left">
-
                                 </div>
                                 <div class="order-container-right">
                                     <div class="order-name-div">
@@ -210,9 +209,9 @@ VALUES ('$name', '$contact', '$address', '$method')";
         $row = mysqli_fetch_assoc($order_result);
 
         $product_name = $row['product_name'];
-        $product_price = $row['product_price'];
+        $product_price = number_format($row['product_price'], 2);
         $product_quantity = $row['product_quantity'];
-        $subtotal = $product_price * $product_quantity;
+        $subtotal = number_format($product_price * $product_quantity, 2);
         $shipping = 5;
         $tax = round($subtotal * 0.1, 2);
         $total = $subtotal + $shipping + $tax;
@@ -231,18 +230,25 @@ VALUES ('$name', '$contact', '$address', '$method')";
                         <div class="order-container-header">
                             <span>Order Details</span>
                         </div>
-                        <div class="order-image-container">
-
-                        </div>
+                        <?php
+                        for($i = 1; $i < 7; $i++){?>
                         <div class="order-container-body">
-                            <div class="order-name-div">
-                                <span><?php echo $product_name ?></span>
+                            <div class="order-container-left">
+
                             </div>
-                            <div class="order-price-quantity-div">
-                                <span>RM <?php echo $product_price ?></span>
-                                <span><span id="qty">Qty.</span> <?php echo $product_quantity ?></span>
+                            <div class="order-container-right">
+                                <div class="order-name-div">
+                                    <span><?php echo $product_name ?></span>
+                                </div>
+                                <div class="order-price-quantity-div">
+                                    <span>RM <?php echo $product_price ?></span>
+                                    <span><span id="qty">Qty.</span> <?php echo $product_quantity ?></span>
+                                </div>
                             </div>
                         </div>
+                        <?php 
+                        }
+                        ?>
                     </div>
                     <div class="form-container">
                         <div class="recipient-detail-div">
@@ -328,14 +334,6 @@ VALUES ('$name', '$contact', '$address', '$method')";
                                 <span>Payment Details</span>
                             </div>
                             <div class="payment-summary-body">
-                                <div class="price-row">
-                                    <span>Price</span>
-                                    <span>RM <?php echo $product_price ?></span>
-                                </div>
-                                <div class="quantity-row">
-                                    <span>Quantity</span>
-                                    <span>x <?php echo $product_quantity ?></span>
-                                </div>
                                 <div class="subtotal-row">
                                     <span>Subtotal</span>
                                     <span>RM <?php echo $subtotal ?></span>
@@ -361,8 +359,7 @@ VALUES ('$name', '$contact', '$address', '$method')";
                     </div>
                 </div>
             </div>
-        </div>
-    <?php } ?>
+        <?php } ?>
 </body>
 
 </html>
