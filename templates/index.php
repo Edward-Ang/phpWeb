@@ -13,11 +13,15 @@ echo "Hello World";
 
 <body><?php
         require('database.php');
-        $sql_query = "SELECT * FROM order_table WHERE id = 1";
-        $result = mysqli_query($con, $sql_query);
-        $row = mysqli_fetch_assoc($result) ?>
+        $arrayid = array(1, 2);
+        $serialized_array = urlencode(serialize($arrayid));
 
-    <a href="payment.php?id=<?php echo $row["id"]; ?>" class="button-link">Checkout Button</a>
+        $sql_query = "SELECT * FROM order_table";
+        $result = mysqli_query($con, $sql_query);
+        $row = mysqli_fetch_assoc($result);
+        ?>
+
+    <a href="payment.php?ids=<?php echo $serialized_array; ?>" class="button-link">Checkout Button</a>
 </body>
 
 </html>
