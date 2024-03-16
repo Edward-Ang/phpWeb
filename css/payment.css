@@ -1,10 +1,4 @@
-:root {
-  --payment-blue: #2260ff;
-  --payment-border: #b5bfd9;
-  --payment-green: #1aa06d;
-  --payment-red: #ff0000;
-  --payment-white: #fff;
-}
+@import url(root.css);
 
 html {
   height: 100%;
@@ -543,7 +537,12 @@ body {
   text-decoration: none;
 }
 
-.track {
+.pay-history-btn a{
+  text-decoration: none;
+  color: black;
+}
+
+.pay-history-btn {
   display: inline-flex;
   margin-top: 0.75rem;
   padding: 0.5rem 1rem;

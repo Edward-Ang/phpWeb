@@ -57,7 +57,7 @@
                         </div>
                         <div class="actions">
                             <button type="button" class="continue-shop-btn"><a href="index.php">Continue shop</a></button>
-                            <button type="button" class="track"><a href="">View my order</a></button>
+                            <button type="button" class="pay-history-btn"><a href="pay_history.php">Payment history</a></button>
                         </div>
                     </div>
                 </div>

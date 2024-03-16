@@ -11,7 +11,7 @@
 
 <body>
 
-    <div>
+    <div class="pay-history-container">
         <div class="pay-history-header">
             <span>Payment history</span>
         </div>
@@ -53,7 +53,6 @@
                     $counter++;
                     }
                     ?>
-                    <!-- Add more rows with data as needed -->
                 </tbody>
             </table>
         </div>
