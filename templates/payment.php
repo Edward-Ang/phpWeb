@@ -23,9 +23,11 @@
         $address = mysqli_real_escape_string($con, $address);
         $method = stripslashes($_REQUEST['method']);
         $method = mysqli_real_escape_string($con, $method);
+        $date_pay = date("Y-m-d");
+        $total_pay = $_REQUEST['total'];
 
-        $query = "INSERT into payment (name, contact, address, method)
-        VALUES ('$name', '$contact', '$address', '$method')";
+        $query = "INSERT into payment (name, contact, address, method, date, total)
+        VALUES ('$name', '$contact', '$address', '$method', '$date_pay', '$total_pay')";
         $result = mysqli_query($con, $query);
 
         if ($result) {
@@ -55,7 +57,7 @@
                         </div>
                         <div class="actions">
                             <button type="button" class="continue-shop-btn"><a href="index.php">Continue shop</a></button>
-                            <button type="button" class="track">View my order</button>
+                            <button type="button" class="track"><a href="">View my order</a></button>
                         </div>
                     </div>
                 </div>
@@ -388,7 +390,7 @@
                                 <div class="payment-summary-footer">
                                     <span>Total</span>
                                     <span>RM <?php echo $total ?></span>
-                                </div>
+                                    <input type="hidden" name="total" value="<?php echo $total; ?>">                                </div>
                                 <div class="payment-btn-div">
                                     <button class="payment-btn" id="payment-btn" type="submit">Confirm To Pay &nbsp<i class="fa-solid fa-right-long"></i></button>
                                     </form>

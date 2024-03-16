@@ -22,6 +22,7 @@ echo "Hello World";
         ?>
 
     <a href="payment.php?ids=<?php echo $serialized_array; ?>" class="button-link">Checkout Button</a>
+    <a href="pay_history.php" class="button-link">Payment History</a>
 </body>
 
 </html>
