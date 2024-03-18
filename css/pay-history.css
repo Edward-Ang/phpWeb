@@ -1,0 +1,69 @@
+@import url(root.css);
+@import url(header.css);
+
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+}
+
+.pay-history-container{
+    padding: 30px;
+}
+
+.pay-history-header{
+    margin-bottom: 30px;
+}
+
+.pay-history-header span{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0px;
+    border: 2px solid  var(--payment-border);
+    border-bottom: none;
+    border-radius: 8px;
+}
+
+th{
+    background-color: rgb(198, 198, 198);
+    border-bottom: 2px solid  var(--payment-border);
+    border-bottom: 2px solid  var(--payment-border);
+}
+
+td{
+    border-bottom: 2px solid  var(--payment-border);
+    font-size: 16px;
+}
+
+th, td{
+    padding: 8px;
+    text-align: left;
+}
+
+th:first-child{
+    border-radius: 6px 0px 0px 0px;
+}
+
+th:last-child{
+    border-radius: 0px 6px 0px 0px;
+}
+
+tr:last-child td:first-child {
+    border-radius: 0px 0px 0px 7px;
+}
+
+tr:last-child td:last-child {
+    border-radius: 0px 0px 7px 0px;
+}
+
+.badge{
+    padding: 5px 10px 5px 10px;
+}

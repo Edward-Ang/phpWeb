@@ -1,0 +1,48 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Basic styles for the header */
+.site-header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    float: left;
+}
+
+.site-navigation {
+    float: right;
+}
+
+.site-navigation ul {
+    list-style: none;
+}
+
+.site-navigation ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.site-navigation ul li:first-child {
+    margin-left: 0;
+}
+
+.site-navigation ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
