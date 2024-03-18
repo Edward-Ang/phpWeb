@@ -14,7 +14,7 @@
             <h1 class="site-title">Your Website</h1>
             <nav class="site-navigation">
                 <ul>
-                    <li><a href="index.php">Home</a></li>
+                    <li><a href="user_dashboard.php">Home</a></li>
                     <li><a href="order.php">Order</a></li>
                     <li><a href="pay_history.php" class="button-link">Payment History</a></li>
                     <li><a href="#">Staff</a></li>
@@ -25,12 +25,12 @@
     </header>
 
     <?php
-    require('database.php');
-    $arrayid = array(1, 2);
+    require('db_connect.php');
+    $arrayid = array(1);
     $serialized_array = urlencode(serialize($arrayid));
 
     $sql_query = "SELECT * FROM order_table";
-    $result = mysqli_query($con, $sql_query);
+    $result = mysqli_query($conn, $sql_query);
     $row = mysqli_fetch_assoc($result);
     ?>
 

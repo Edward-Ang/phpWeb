@@ -13,23 +13,23 @@
 
 <body>
     <?php
-    require('database.php');
+    require('db_connect.php');
 
     if (isset($_REQUEST['name'])) {
         $name = stripslashes($_REQUEST['name']);
-        $name = mysqli_real_escape_string($con, $name);
+        $name = mysqli_real_escape_string($conn, $name);
         $contact = stripslashes($_REQUEST['contact']);
-        $contact = mysqli_real_escape_string($con, $contact);
+        $contact = mysqli_real_escape_string($conn, $contact);
         $address = stripslashes($_REQUEST['address']);
-        $address = mysqli_real_escape_string($con, $address);
+        $address = mysqli_real_escape_string($conn, $address);
         $method = stripslashes($_REQUEST['method']);
-        $method = mysqli_real_escape_string($con, $method);
+        $method = mysqli_real_escape_string($conn, $method);
         $date_pay = date("Y-m-d");
         $total_pay = $_REQUEST['total'];
 
         $query = "INSERT into payment (name, contact, address, method, date, total)
         VALUES ('$name', '$contact', '$address', '$method', '$date_pay', '$total_pay')";
-        $result = mysqli_query($con, $query);
+        $result = mysqli_query($conn, $query);
 
         if ($result) {
             $ids = unserialize(urldecode($_GET['ids']));
@@ -37,7 +37,7 @@
             $ids = implode(",", $ids);
 
             $order_query = "SELECT * FROM order_table WHERE id IN ($ids)";
-            $order_result = mysqli_query($con, $order_query);
+            $order_result = mysqli_query($conn, $order_query);
     ?>
             <div class="popup-div" id="popup-div" style="display: flex;">
                 <div class="popup-container">
@@ -86,7 +86,7 @@
                                 $product_id = $order_row['p_id'];
 
                                 $product_query = "SELECT * FROM products WHERE id = $product_id";
-                                $product_result = mysqli_query($con, $product_query);
+                                $product_result = mysqli_query($conn, $product_query);
                                 $product_row = mysqli_fetch_assoc($product_result);
 
                                 $price = $product_row['price'];
@@ -255,7 +255,7 @@
         $ids = implode(",", $ids);
 
         $order_query = "SELECT * FROM order_table WHERE id IN ($ids)";
-        $order_result = mysqli_query($con, $order_query);
+        $order_result = mysqli_query($conn, $order_query);
 
             ?>
             <div class="payment-wrapper">
@@ -281,7 +281,7 @@
                                 $product_id = $order_row['p_id'];
 
                                 $product_query = "SELECT * FROM products WHERE id = $product_id";
-                                $product_result = mysqli_query($con, $product_query);
+                                $product_result = mysqli_query($conn, $product_query);
                                 $product_row = mysqli_fetch_assoc($product_result);
 
                                 $price = $product_row['price'];
@@ -295,7 +295,7 @@
                             ?>
                                 <div class="order-container-body">
                                     <div class="order-container-left">
-                                        <img src="https://placehold.co/600x400/orange/white" />
+                                        <img src="../<?php echo $product_row['image'] ?>" />
                                     </div>
                                     <div class="order-container-right">
                                         <div class="order-name-div">

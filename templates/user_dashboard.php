@@ -14,7 +14,7 @@
             <h1 class="site-title">Your Website</h1>
             <nav class="site-navigation">
                 <ul>
-                    <li><a href="index.php">Home</a></li>
+                    <li><a href="user_dashboard.php">Home</a></li>
                     <li><a href="order.php">Order</a></li>
                     <li><a href="pay_history.php" class="button-link">Payment History</a></li>
                     <li><a href="#">Staff</a></li>

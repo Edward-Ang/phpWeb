@@ -10,6 +10,20 @@
 </head>
 
 <body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Your Website</h1>
+            <nav class="site-navigation">
+                <ul>
+                    <li><a href="user_dashboard.php">Home</a></li>
+                    <li><a href="order.php">Order</a></li>
+                    <li><a href="pay_history.php" class="button-link">Payment History</a></li>
+                    <li><a href="#">Staff</a></li>
+                </ul>
+            </nav>
+            <span>Account</span>
+        </div>
+    </header>
 
     <div class="pay-history-container">
         <div class="pay-history-header">
@@ -31,10 +45,10 @@
                 </thead>
                 <tbody>
                     <?php
-                    require('database.php');
+                    require('db_connect.php');
 
                     $sql_query = "SELECT * FROM payment";
-                    $result = mysqli_query($con, $sql_query);
+                    $result = mysqli_query($conn, $sql_query);
                     $counter = 1;
                     while ($row = mysqli_fetch_assoc($result)) {
 
@@ -50,7 +64,7 @@
                             <td>RM <?php echo $row['total'] ?></td>
                         </tr>
                     <?php
-                    $counter++;
+                        $counter++;
                     }
                     ?>
                 </tbody>
