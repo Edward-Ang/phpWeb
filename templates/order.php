@@ -23,6 +23,19 @@
             <span>Account</span>
         </div>
     </header>
+
+    <?php
+    require('database.php');
+    $arrayid = array(1, 2);
+    $serialized_array = urlencode(serialize($arrayid));
+
+    $sql_query = "SELECT * FROM order_table";
+    $result = mysqli_query($con, $sql_query);
+    $row = mysqli_fetch_assoc($result);
+    ?>
+
+    <a href="payment.php?ids=<?php echo $serialized_array; ?>" class="button-link">Checkout Button</a>
+
 </body>
 
 </html>

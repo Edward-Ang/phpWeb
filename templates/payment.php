@@ -82,9 +82,19 @@
 
                             for ($i = 0; $i < $count; $i++) {
                                 $order_row = mysqli_fetch_assoc($order_result);
+
+                                $product_id = $order_row['p_id'];
+
+                                $product_query = "SELECT * FROM products WHERE id = $product_id";
+                                $product_result = mysqli_query($con, $product_query);
+                                $product_row = mysqli_fetch_assoc($product_result);
+
+                                $price = $product_row['price'];
+                                $desc = $product_row['description'];
+
                                 // Append values to the array
                                 $productData[] = array(
-                                    "product_price" => number_format($order_row["product_price"], 2),
+                                    "product_price" => $price,
                                     "product_quantity" => $order_row["product_quantity"]
                                 );
                             ?>
@@ -94,10 +104,13 @@
                                     </div>
                                     <div class="order-container-right">
                                         <div class="order-name-div">
-                                            <span><?php echo $order_row["product_name"] ?></span>
+                                            <span><?php echo $product_row["product_name"] ?></span>
+                                        </div>
+                                        <div class="order-desc-div">
+                                            <span><?php echo $desc ?></span>
                                         </div>
                                         <div class="order-price-quantity-div">
-                                            <span>RM <?php echo number_format($order_row["product_price"], 2) ?></span>
+                                            <span>RM <?php echo number_format($product_row["price"], 2) ?></span>
                                             <span><span id="qty">X</span> <?php echo $order_row["product_quantity"] ?></span>
                                         </div>
                                     </div>
@@ -108,13 +121,20 @@
 
                             // Loop through each element of the $productData array
                             foreach ($productData as $item) {
-                                // Multiply the product price by the product quantity and add it to the total
-                                $subtotal += number_format($item['product_price'] * $item['product_quantity'], 2);
+                                // Check if the product price is numeric
+                                if (is_numeric($item['product_price'])) {
+                                    // Multiply the product price by the product quantity and add it to the total
+                                    $subtotal += $item['product_price'] * $item['product_quantity'];
+                                } else {
+                                    // Handle non-numeric values (e.g., output an error message)
+                                    echo "Error: Non-numeric value encountered for product price";
+                                }
                             }
 
                             $shipping = 5;
                             $tax = round($subtotal * 0.1, 2);
-                            $total = number_format($subtotal + $shipping + $tax, 2);
+                            $total = $subtotal + $shipping + $tax;
+                            $display_total = number_format($total, 2);
                             ?>
                         </div>
                         <div class="form-container">
@@ -201,22 +221,23 @@
                                     <span>Payment Details</span>
                                 </div>
                                 <div class="payment-summary-body">
-                                    <div class="subtotal-order_row">
+                                    <div class="subtotal-row">
                                         <span>Subtotal</span>
                                         <span>RM <?php echo $subtotal ?></span>
                                     </div>
-                                    <div class="shipping-order_row">
+                                    <div class="shipping-row">
                                         <span>Shipping</span>
                                         <span>RM 5.00</span>
                                     </div>
-                                    <div class="tax-order_row">
+                                    <div class="tax-row">
                                         <span>Tax (10%)</span>
                                         <span>RM <?php echo $tax ?></span>
                                     </div>
                                 </div>
                                 <div class="payment-summary-footer">
                                     <span>Total</span>
-                                    <span>RM <?php echo $total ?></span>
+                                    <span>RM <?php echo $display_total ?></span>
+                                    <input type="hidden" name="total" value="<?php echo $total; ?>">
                                 </div>
                                 <div class="payment-btn-div">
                                     <button class="payment-btn" id="payment-btn" type="submit">Confirm To Pay &nbsp<i class="fa-solid fa-right-long"></i></button>
@@ -240,7 +261,7 @@
             <div class="payment-wrapper">
                 <div class="payment-header-div">
                     <span>Checkout</span>
-                    <button class="cancel-button" onclick="window.location.href = 'index.php'">
+                    <button class="cancel-button" onclick="window.location.href = 'order.php'">
                         <p class="cancel-text">Cancel</p>
                     </button>
                 </div>
@@ -274,7 +295,7 @@
                             ?>
                                 <div class="order-container-body">
                                     <div class="order-container-left">
-
+                                        <img src="https://placehold.co/600x400/orange/white" />
                                     </div>
                                     <div class="order-container-right">
                                         <div class="order-name-div">
