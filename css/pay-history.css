@@ -28,7 +28,7 @@ table {
     border-spacing: 0px;
     border: 2px solid  var(--payment-border);
     border-bottom: none;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
 th{
@@ -48,19 +48,19 @@ th, td{
 }
 
 th:first-child{
-    border-radius: 8px 0px 0px 0px;
+    border-radius: 6px 0px 0px 0px;
 }
 
 th:last-child{
-    border-radius: 0px 8px 0px 0px;
+    border-radius: 0px 6px 0px 0px;
 }
 
 tr:last-child td:first-child {
-    border-radius: 0px 0px 0px 9px;
+    border-radius: 0px 0px 0px 7px;
 }
 
 tr:last-child td:last-child {
-    border-radius: 0px 0px 9px 0px;
+    border-radius: 0px 0px 7px 0px;
 }
 
 .badge{

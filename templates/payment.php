@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/payment.css">
     <script src="https://kit.fontawesome.com/d7d8d20a77.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../scripts/payment.js"></script>
 </head>
 
 <body>
@@ -35,9 +36,9 @@
             $count = count($ids);
             $ids = implode(",", $ids);
 
-            $sql_query = "SELECT * FROM order_table WHERE id IN ($ids)";
-            $order_result = mysqli_query($con, $sql_query);
-        ?>
+            $order_query = "SELECT * FROM order_table WHERE id IN ($ids)";
+            $order_result = mysqli_query($con, $order_query);
+    ?>
             <div class="popup-div" id="popup-div" style="display: flex;">
                 <div class="popup-container">
                     <div class="header">
@@ -80,11 +81,11 @@
                             $productData = array();
 
                             for ($i = 0; $i < $count; $i++) {
-                                $row = mysqli_fetch_assoc($order_result);
+                                $order_row = mysqli_fetch_assoc($order_result);
                                 // Append values to the array
                                 $productData[] = array(
-                                    "product_price" => number_format($row["product_price"], 2),
-                                    "product_quantity" => $row["product_quantity"]
+                                    "product_price" => number_format($order_row["product_price"], 2),
+                                    "product_quantity" => $order_row["product_quantity"]
                                 );
                             ?>
                                 <div class="order-container-body">
@@ -93,11 +94,11 @@
                                     </div>
                                     <div class="order-container-right">
                                         <div class="order-name-div">
-                                            <span><?php echo $row["product_name"] ?></span>
+                                            <span><?php echo $order_row["product_name"] ?></span>
                                         </div>
                                         <div class="order-price-quantity-div">
-                                            <span>RM <?php echo number_format($row["product_price"], 2) ?></span>
-                                            <span><span id="qty">X</span> <?php echo $row["product_quantity"] ?></span>
+                                            <span>RM <?php echo number_format($order_row["product_price"], 2) ?></span>
+                                            <span><span id="qty">X</span> <?php echo $order_row["product_quantity"] ?></span>
                                         </div>
                                     </div>
                                 </div>
@@ -200,15 +201,15 @@
                                     <span>Payment Details</span>
                                 </div>
                                 <div class="payment-summary-body">
-                                    <div class="subtotal-row">
+                                    <div class="subtotal-order_row">
                                         <span>Subtotal</span>
                                         <span>RM <?php echo $subtotal ?></span>
                                     </div>
-                                    <div class="shipping-row">
+                                    <div class="shipping-order_row">
                                         <span>Shipping</span>
                                         <span>RM 5.00</span>
                                     </div>
-                                    <div class="tax-row">
+                                    <div class="tax-order_row">
                                         <span>Tax (10%)</span>
                                         <span>RM <?php echo $tax ?></span>
                                     </div>
@@ -232,8 +233,8 @@
         $count = count($ids);
         $ids = implode(",", $ids);
 
-        $sql_query = "SELECT * FROM order_table WHERE id IN ($ids)";
-        $order_result = mysqli_query($con, $sql_query);
+        $order_query = "SELECT * FROM order_table WHERE id IN ($ids)";
+        $order_result = mysqli_query($con, $order_query);
 
             ?>
             <div class="payment-wrapper">
@@ -254,11 +255,21 @@
                             $productData = array();
 
                             for ($i = 0; $i < $count; $i++) {
-                                $row = mysqli_fetch_assoc($order_result);
+                                $order_row = mysqli_fetch_assoc($order_result);
+
+                                $product_id = $order_row['p_id'];
+
+                                $product_query = "SELECT * FROM products WHERE id = $product_id";
+                                $product_result = mysqli_query($con, $product_query);
+                                $product_row = mysqli_fetch_assoc($product_result);
+
+                                $price = $product_row['price'];
+                                $desc = $product_row['description'];
+
                                 // Append values to the array
                                 $productData[] = array(
-                                    "product_price" => number_format($row["product_price"], 2),
-                                    "product_quantity" => $row["product_quantity"]
+                                    "product_price" => $price,
+                                    "product_quantity" => $order_row["product_quantity"]
                                 );
                             ?>
                                 <div class="order-container-body">
@@ -267,11 +278,14 @@
                                     </div>
                                     <div class="order-container-right">
                                         <div class="order-name-div">
-                                            <span><?php echo $row["product_name"] ?></span>
+                                            <span><?php echo $product_row["product_name"] ?></span>
+                                        </div>
+                                        <div class="order-desc-div">
+                                            <span><?php echo $desc ?></span>
                                         </div>
                                         <div class="order-price-quantity-div">
-                                            <span>RM <?php echo number_format($row["product_price"], 2) ?></span>
-                                            <span><span id="qty">X</span> <?php echo $row["product_quantity"] ?></span>
+                                            <span>RM <?php echo number_format($product_row["price"], 2) ?></span>
+                                            <span><span id="qty">X</span> <?php echo $order_row["product_quantity"] ?></span>
                                         </div>
                                     </div>
                                 </div>
@@ -281,13 +295,20 @@
 
                             // Loop through each element of the $productData array
                             foreach ($productData as $item) {
-                                // Multiply the product price by the product quantity and add it to the total
-                                $subtotal += number_format($item['product_price'] * $item['product_quantity'], 2);
+                                // Check if the product price is numeric
+                                if (is_numeric($item['product_price'])) {
+                                    // Multiply the product price by the product quantity and add it to the total
+                                    $subtotal += $item['product_price'] * $item['product_quantity'];
+                                } else {
+                                    // Handle non-numeric values (e.g., output an error message)
+                                    echo "Error: Non-numeric value encountered for product price";
+                                }
                             }
 
                             $shipping = 5;
                             $tax = round($subtotal * 0.1, 2);
-                            $total = number_format($subtotal + $shipping + $tax, 2);
+                            $total = $subtotal + $shipping + $tax;
+                            $display_total = number_format($total, 2);
                             ?>
                         </div>
                         <div class="form-container">
@@ -389,8 +410,9 @@
                                 </div>
                                 <div class="payment-summary-footer">
                                     <span>Total</span>
-                                    <span>RM <?php echo $total ?></span>
-                                    <input type="hidden" name="total" value="<?php echo $total; ?>">                                </div>
+                                    <span>RM <?php echo $display_total ?></span>
+                                    <input type="hidden" name="total" value="<?php echo $total; ?>">
+                                </div>
                                 <div class="payment-btn-div">
                                     <button class="payment-btn" id="payment-btn" type="submit">Confirm To Pay &nbsp<i class="fa-solid fa-right-long"></i></button>
                                     </form>
