@@ -9,13 +9,13 @@ html {
 body {
   margin: 0;
   padding: 0;
-  height: 80vh;
+  height: 100vh;
 }
 
 .payment-wrapper{
   display: flex;
   flex-direction: column;
-  height: 90vh;
+  height: 100vh;
 }
 
 .payment-header-div{
@@ -24,7 +24,6 @@ body {
   padding: 15px 30px 14px 30px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   height: fit-content;
-  min-height: 40px;
 }
 
 .payment-header-div span{
@@ -79,13 +78,12 @@ body {
   padding: 15px 0px 15px 15px;
   width: 70%;
   justify-content: space-between;
-  height: fit-content;
 }
 
 .form-container{
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: space-between;
   width: 50%;
 }
 
@@ -94,6 +92,7 @@ body {
   flex-direction: column;
   width: 100%;
   height: auto;
+  padding: 15px 0px 15px 0px;
 }
 
 .payment-header {
