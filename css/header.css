@@ -9,31 +9,36 @@
     background-color: #333;
     color: #fff;
     padding: 20px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.container {
-    width: 90%;
-    margin: 0 auto;
-    overflow: hidden;
+.header-container {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
 .site-title {
-    float: left;
+    font-size: 24px;
 }
 
 .site-navigation {
-    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: min-content;
 }
 
 .site-navigation ul {
+    display: flex;
     list-style: none;
 }
 
 .site-navigation ul li {
-    display: inline-block;
     margin-left: 20px;
 }
 
@@ -45,4 +50,11 @@
     color: #fff;
     text-decoration: none;
     font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+.logout-btn a{
+    text-decoration: none;
+    color: #fff;
 }
