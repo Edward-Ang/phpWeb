@@ -11,17 +11,17 @@
 
 <body>
     <header class="site-header">
-        <div class="container">
+        <div class="header-container">
             <h1 class="site-title">Your Website</h1>
             <nav class="site-navigation">
                 <ul>
                     <li><a href="user_dashboard.php">Home</a></li>
+                    <li><a href="favorite.php">Favorite</a></li>
                     <li><a href="order.php">Order</a></li>
                     <li><a href="pay_history.php" class="button-link">Payment History</a></li>
-                    <li><a href="#">Staff</a></li>
                 </ul>
             </nav>
-            <span>Account</span>
+            <span class="logout-btn"><a href="logout.php">Logout</a></span>
         </div>
     </header>
 

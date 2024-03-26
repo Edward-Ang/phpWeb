@@ -22,47 +22,54 @@ if (!empty($favorite_products)) {
     $favorite_result = mysqli_query($conn, $favorite_query);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Favorite Products</title>
-    <link rel="stylesheet" href="../css/styles.css">
-</head>
-<body>
-<header style="text-align: center;">
-    <h1>Favorite Products</h1>
-    <nav style="display: flex; justify-content: center;">
-        <div style="margin-right: 20px;">
-            <a href="user_dashboard.php">Home</a>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Favorite Products</title>
+        <link rel="stylesheet" href="../css/styles.css">
+        <link rel="stylesheet" href="../css/header.css">
+    </head>
+
+    <body>
+    <header class="site-header">
+        <div class="header-container">
+            <h1 class="site-title">Your Website</h1>
+            <nav class="site-navigation">
+                <ul>
+                    <li><a href="user_dashboard.php">Home</a></li>
+                    <li><a href="favorite.php">Favorite</a></li>
+                    <li><a href="order.php">Order</a></li>
+                    <li><a href="pay_history.php" class="button-link">Payment History</a></li>
+                </ul>
+            </nav>
+            <span class="logout-btn"><a href="logout.php">Logout</a></span>
         </div>
-        <div style="margin-left: 20px;">
-            <a href="logout.php">Logout</a>
-        </div>
-    </nav>
-</header>
+    </header>
 
 
-<main>
-    <section id="favorite-products">
-        <h2>Favorite Products</h2>
-        <div id="product-grid">
-            <?php while ($row = mysqli_fetch_assoc($favorite_result)) : ?>
-                <div class="product-box">
-                    <div class="product-name">
-                        <a href="product_details.php?id=<?php echo $row['id']; ?>"><?php echo $row['product_name']; ?></a>
-                    </div>
-                    <img src="<?php echo $row['image']; ?>" alt="<?php echo $row['product_name']; ?>" class="product-image">
-                    <div class="product-price">RM <?php echo $row['price']; ?></div>
+        <main>
+            <section id="favorite-products">
+                <h2>Favorite Products</h2>
+                <div id="product-grid">
+                    <?php while ($row = mysqli_fetch_assoc($favorite_result)) : ?>
+                        <div class="product-box">
+                            <div class="product-name">
+                                <a href="product_details.php?id=<?php echo $row['id']; ?>"><?php echo $row['product_name']; ?></a>
+                            </div>
+                            <img src="<?php echo $row['image']; ?>" alt="<?php echo $row['product_name']; ?>" class="product-image">
+                            <div class="product-price">RM <?php echo $row['price']; ?></div>
+                        </div>
+                    <?php endwhile; ?>
                 </div>
-            <?php endwhile; ?>
-        </div>
-    </section>
-</main>
+            </section>
+        </main>
 
-</body>
-</html>
+    </body>
+
+    </html>
 
 <?php
 } else {
@@ -74,18 +81,22 @@ if (!empty($favorite_products)) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>No Favorite Products</title>
         <link rel="stylesheet" href="../css/styles.css">
+        <link rel="stylesheet" href="../css/header.css">
     </head>
     <body>
-    <header style="text-align: center;">
-        <h1>Favorite Products</h1>
-        <nav style="display: flex; justify-content: center;">
-            <div style="margin-right: 20px;">
-                <a href="user_dashboard.php">Home</a>
-            </div>
-            <div style="margin-left: 20px;">
-                <a href="logout.php">Logout</a>
-            </div>
-        </nav>
+    <header class="site-header">
+        <div class="header-container">
+            <h1 class="site-title">Your Website</h1>
+            <nav class="site-navigation">
+                <ul>
+                    <li><a href="user_dashboard.php">Home</a></li>
+                    <li><a href="favorite.php">Favorite</a></li>
+                    <li><a href="order.php">Order</a></li>
+                    <li><a href="pay_history.php" class="button-link">Payment History</a></li>
+                </ul>
+            </nav>
+            <span class="logout-btn"><a href="logout.php">Logout</a></span>
+        </div>
     </header>
 
     <main>
@@ -100,4 +111,4 @@ if (!empty($favorite_products)) {
 
 // Close database connection
 mysqli_close($conn);
-?> 
+?>

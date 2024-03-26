@@ -1,5 +1,9 @@
 @import url(root.css);
 
+* {
+  font-family: 'poppins', sans-serif;
+}
+
 html {
   height: 100%;
   margin: 0;
@@ -15,7 +19,7 @@ body {
 .payment-wrapper{
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 }
 
 .payment-header-div{
@@ -48,6 +52,7 @@ body {
   border: none;
   cursor: pointer;
   transition: 400ms;
+  min-height: 40px;
 }
 
 .cancel-button .cancel-text {
@@ -66,7 +71,7 @@ body {
 }
 
 .main-div {
-  height: auto;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   margin: 0;

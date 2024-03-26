@@ -48,6 +48,7 @@ mysqli_close($conn);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Details - <?php echo $product_name; ?></title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../css/header.css">
     <style>
         /* Additional styling for product details */
         body {
@@ -137,20 +138,47 @@ mysqli_close($conn);
         .product-actions button:hover {
             background-color: #0056b3;
         }
+
+        .add-to-cart-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-right: 10px; /* Add margin to create space */
+}
+
+.buy-now-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
     </style>
 </head>
 <body>
-<header style="text-align: center;">
-    <h1>Favorite Products</h1>
-    <nav style="display: flex; justify-content: center;">
-        <div style="margin-right: 20px;">
-            <a href="user_dashboard.php">Home</a>
+<header class="site-header">
+        <div class="header-container">
+            <h1 class="site-title">Your Website</h1>
+            <nav class="site-navigation">
+                <ul>
+                    <li><a href="user_dashboard.php">Home</a></li>
+                    <li><a href="favorite.php">Favorite</a></li>
+                    <li><a href="order.php">Order</a></li>
+                    <li><a href="pay_history.php" class="button-link">Payment History</a></li>
+                </ul>
+            </nav>
+            <span class="logout-btn"><a href="logout.php">Logout</a></span>
         </div>
-        <div style="margin-left: 20px;">
-            <a href="logout.php">Logout</a>
-        </div>
-    </nav>
-</header>
+    </header>
 
     <main style="padding-top: 400px;">
     <section id="product-details">
@@ -163,8 +191,8 @@ mysqli_close($conn);
             <p class="product-description"><?php echo $description; ?></p>
             <!-- Add interactive buttons for adding to cart and buying -->
             <div class="product-actions">
-                <button onclick="addToCart(<?php echo $product_id; ?>)">Add to Cart</button>
-                <button onclick="buyNow(<?php echo $product_id; ?>)">Buy Now</button>
+                <a href="order.php?product_id=<?php echo $product_id; ?>" class="button-link add-to-cart-button">Add to Cart</a>
+                <button onclick="buyNow(<?php echo $product_id; ?>)" class="buy-now-button">Buy Now</button>
             </div>
         </div>
     </section>

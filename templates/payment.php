@@ -6,12 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Website</title>
     <link rel="stylesheet" href="../css/payment.css">
+    <link rel="stylesheet" href="../css/header.css">
     <script src="https://kit.fontawesome.com/d7d8d20a77.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="../scripts/payment.js"></script>
 </head>
 
 <body>
+    <header class="site-header">
+        <div class="header-container">
+            <h1 class="site-title">Your Website</h1>
+            <nav class="site-navigation">
+                <ul>
+                    <li><a href="user_dashboard.php">Home</a></li>
+                    <li><a href="favorite.php">Favorite</a></li>
+                    <li><a href="order.php">Order</a></li>
+                    <li><a href="pay_history.php" class="button-link">Payment History</a></li>
+                </ul>
+            </nav>
+            <span class="logout-btn"><a href="logout.php">Logout</a></span>
+        </div>
+    </header>
     <?php
     require('db_connect.php');
 
