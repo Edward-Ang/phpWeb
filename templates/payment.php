@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../css/header.css">
     <script src="https://kit.fontawesome.com/d7d8d20a77.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="../scripts/payment.js"></script>
 </head>
 
 <body>
