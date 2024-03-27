@@ -28,6 +28,7 @@
         </div>
     </header>
     <?php
+    session_start();
     require('db_connect.php');
 
     if (isset($_REQUEST['name'])) {
@@ -41,9 +42,10 @@
         $method = mysqli_real_escape_string($conn, $method);
         $date_pay = date("Y-m-d");
         $total_pay = $_REQUEST['total'];
+        $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
-        $query = "INSERT into payment (name, contact, address, method, date, total)
-        VALUES ('$name', '$contact', '$address', '$method', '$date_pay', '$total_pay')";
+        $query = "INSERT into payment (name, contact, address, method, date, total, u_id)
+        VALUES ('$name', '$contact', '$address', '$method', '$date_pay', '$total_pay', '$user_id')";
         $result = mysqli_query($conn, $query);
 
         if ($result) {
@@ -265,11 +267,12 @@
             <?php
         }
     } else {
+        $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
         $ids = unserialize(urldecode($_GET['ids']));
         $count = count($ids);
         $ids = implode(",", $ids);
 
-        $order_query = "SELECT * FROM order_table WHERE id IN ($ids)";
+        $order_query = "SELECT * FROM order_table WHERE id IN ($ids) AND user_id = '$user_id'";
         $order_result = mysqli_query($conn, $order_query);
 
             ?>

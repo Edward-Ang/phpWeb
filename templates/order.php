@@ -1,60 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+// Include the database connection file
+include 'db_connect.php';
+
+// Start the session (if not already started)
 session_start();
 
-// Include the database connection file
-include_once 'db_connect.php';
+// Retrieve the product ID from the URL parameter
+$product_id = isset($_GET['product_id']) ? $_GET['product_id'] : '';
 
-// Check if the product ID is provided in the URL
-if (isset($_GET['product_id'])) {
-    $product_id = $_GET['product_id'];
+// Retrieve the user ID from the session variable
+$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
-    // Check if the product already exists in the cart
-    if (productExistsInCart($product_id)) {
-        // Product already exists in the cart, display a message to the user
-        echo '<script>alert("This item is already in your cart."); window.location.href = "user_dashboard.php";</script>';
-        exit(); // Stop further execution
+// Check if both product ID and user ID are valid
+if ($product_id && $user_id) {
+    // Default quantity value
+    $default_quantity = 1;
+
+    // Prepare SQL statement to insert order details into the order table
+    $sql = "INSERT INTO order_table (user_id, p_id, product_quantity) VALUES (?, ?, ?)";
+
+    // Prepare and bind parameters
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("iii", $user_id, $product_id, $default_quantity);
+
+    // Execute the statement
+    if ($stmt->execute()) {
+        echo "New record inserted successfully.";
     } else {
-        // Product doesn't exist in the cart, proceed to insert into the order_table
-        // Prepare SQL statement to insert the product ID into the order_table
-        $sql = "INSERT INTO order_table (p_id) VALUES (?)";
-
-        // Prepare and bind parameters
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $product_id);
-
-        // Execute the statement
-        if ($stmt->execute()) {
-            // Product added to cart successfully
-            header("Location: order.php"); // Redirect to the cart page
-            exit();
-        } else {
-            // Error inserting product to cart
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-
-        // Close the statement
-        $stmt->close();
+        echo "Error: " . $stmt->error;
     }
+
+    // Close the statement
+    $stmt->close();
 } else {
-    // Product ID is not provided in the URL
-    echo "Product ID is missing.";
+    echo "Error: Invalid product ID or user ID.";
 }
 
-// Close the database connection
+// Close the connection
 $conn->close();
-
-// Function to check if the product already exists in the cart
-function productExistsInCart($product_id)
-{
-    // You need to implement this function based on how you manage your cart items
-    // Here is a simple example assuming you have an array to store productIds in the cart
-    $cartItems = []; // Example array to store productIds of items in the cart
-    // Check if the productId is already in the cart
-    return in_array($product_id, $cartItems);
-}
 ?>
+
 
 <head>
     <meta charset="UTF-8">

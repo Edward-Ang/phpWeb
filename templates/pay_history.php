@@ -45,9 +45,12 @@
                 </thead>
                 <tbody>
                     <?php
+                    session_start();
                     require('db_connect.php');
 
-                    $sql_query = "SELECT * FROM payment";
+                    $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+
+                    $sql_query = "SELECT * FROM payment WHERE u_id = '$user_id'";
                     $result = mysqli_query($conn, $sql_query);
                     $counter = 1;
                     while ($row = mysqli_fetch_assoc($result)) {
