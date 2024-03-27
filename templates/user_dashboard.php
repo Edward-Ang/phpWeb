@@ -65,12 +65,6 @@ mysqli_close($conn);
     </header>
 
     <main>
-        <form style="display: flex; align-items: center; background-color: black; width: fit-content">
-            <input type="text" id="search-input" name="search" placeholder="Enter search keyword..." style="border: 1px solid #ccc; border-radius: 4px; padding: 8px; width: 150px; margin-right: 20px;">
-            <div id="search-icon" style="cursor: pointer;">
-                <img src="../uploads/magnifying_glass_icon.png" alt="Search" style="width: 20px; height: 20px;" onclick="toggleSearchInput()">
-            </div>
-        </form>
         <section id="product-listings">
             <h2>Product Listings</h2>
             <div id="filter">
@@ -81,6 +75,13 @@ mysqli_close($conn);
                         <option value="<?php echo $category; ?>"><?php echo $category; ?></option>
                     <?php endforeach; ?>
                 </select>
+                <form style="display: flex; align-items: center; width: fit-content">
+            <input type="text" id="search-input" name="search" placeholder="Enter search keyword..." style="border: 1px solid #ccc; border-radius: 4px; padding: 8px; width: 150px; margin-right: 20px;">
+            <div id="search-icon" style="cursor: pointer;"onclick="toggleSearchInput()">
+                <p>Search
+                <img src="../uploads/magnifying_glass_icon.png" alt="Search" style="width: 20px; height: 20px;">
+            </div>
+        </form>
             </div>
             <div id="product-grid">
                 <?php while ($row = mysqli_fetch_assoc($products_result)) : ?>

@@ -180,7 +180,7 @@ mysqli_close($conn);
         </div>
     </header>
 
-    <main style="padding-top: 400px;">
+    <main style="padding-top: 40px;">
     <section id="product-details">
         <div class="product-image">
             <img src="<?php echo $image; ?>" alt="<?php echo $product_name; ?>">

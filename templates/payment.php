@@ -72,7 +72,7 @@
                                 purchase</p>
                         </div>
                         <div class="actions">
-                            <button type="button" class="continue-shop-btn"><a href="index.php">Continue shop</a></button>
+                            <button type="button" class="continue-shop-btn"><a href="user_dashboard.php">Continue shop</a></button>
                             <button type="button" class="pay-history-btn"><a href="pay_history.php">Payment history</a></button>
                         </div>
                     </div>
@@ -81,7 +81,7 @@
             <div class="payment-wrapper">
                 <div class="payment-header-div">
                     <span>Checkout</span>
-                    <button class="cancel-button" onclick="window.location.href = 'index.php'">
+                    <button class="cancel-button" onclick="window.location.href = 'order.php'">
                         <p class="cancel-text">Cancel</p>
                     </button>
                 </div>
@@ -115,7 +115,7 @@
                             ?>
                                 <div class="order-container-body">
                                     <div class="order-container-left">
-
+                                        <img src="<?php echo $product_row['image'] ?>" />
                                     </div>
                                     <div class="order-container-right">
                                         <div class="order-name-div">
@@ -310,7 +310,7 @@
                             ?>
                                 <div class="order-container-body">
                                     <div class="order-container-left">
-                                        <img src="../<?php echo $product_row['image'] ?>" />
+                                        <img src="<?php echo $product_row['image'] ?>" />
                                     </div>
                                     <div class="order-container-right">
                                         <div class="order-name-div">

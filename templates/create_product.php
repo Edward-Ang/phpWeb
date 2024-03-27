@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stock_level = intval($stock_level);
 
     // File upload handling
-    $target_dir = "uploads/";
+    $target_dir = "../uploads/";
     $target_file = $target_dir . basename($_FILES["image"]["name"]);
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
