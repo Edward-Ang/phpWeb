@@ -110,47 +110,10 @@ $conn->close();
             font-size: 16px;
         }
 
-        .site-header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
         .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .site-title {
-            margin: 0;
-            font-size: 24px;
-        }
-
-        .site-navigation ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .site-navigation ul li {
-            display: inline-block;
-            margin-right: 20px;
-        }
-
-        .site-navigation ul li:last-child {
-            margin-right: 0;
-        }
-
-        .site-navigation ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .account {
-            font-size: 18px;
-            font-weight: bold;
         }
     </style>
 </head>
