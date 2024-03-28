@@ -1,10 +1,13 @@
 /* styles.css */
-.product-name, .product-price {
-    text-decoration: none; /* Remove underline */
+.product-name,
+.product-price {
+    text-decoration: none;
+    /* Remove underline */
 }
 
 .product-box a {
-    text-decoration: none; /* Remove underline from links within product boxes */
+    text-decoration: none;
+    /* Remove underline from links within product boxes */
     color: #333;
 }
 
@@ -23,78 +26,117 @@ header {
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 1000; /* Ensure header stays on top */
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    z-index: 1000;
+    /* Ensure header stays on top */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    /* Add a subtle shadow */
+}
+
+.searchForm{
+    padding: 2px;
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
 }
 
 #search-input {
-    display: none;
+    display: flex;
+    width: 100%;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    margin-right: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 nav a {
     color: #fff;
     text-decoration: none;
     margin-left: 20px;
-    transition: color 0.3s ease; /* Smooth transition for link color */
+    transition: color 0.3s ease;
+    /* Smooth transition for link color */
 }
 
 nav a:hover {
-    color: #ffc107; /* Change link color on hover */
+    color: #ffc107;
+    /* Change link color on hover */
 }
 
 main {
-    padding: 30px 20px 30px 20px; /* Add top padding to make space for fixed header */
-    margin-top: 60px; /* Add margin to prevent content from being hidden under header */
+    padding: 30px 20px 30px 20px;
+    /* Add top padding to make space for fixed header */
+    margin-top: 60px;
+    /* Add margin to prevent content from being hidden under header */
     background-color: #f4f4f4;
 }
 
 /* Product Listings */
 #product-listings {
-    overflow: hidden; /* Clear floats */
+    overflow: hidden;
+    /* Clear floats */
 }
 
 #filter {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
     padding: 10px 30px;
 }
 
 /* Product Boxes Container */
 #product-grid {
-    display: flex; /* Use flexbox for product grid */
-    flex-wrap: wrap; /* Allow products to wrap to the next line */
-    justify-content: flex-start; /* Start from the left */
+    display: flex;
+    /* Use flexbox for product grid */
+    flex-wrap: wrap;
+    /* Allow products to wrap to the next line */
+    justify-content: flex-start;
+    /* Start from the left */
 }
 
 /* Product Boxes */
 .product-box {
-    width: 300px; /* Set a fixed width for the product boxes */
-    height: 400px; /* Set a fixed height for the product boxes */
-    background-color: #fff; /* Add background color to product boxes */
+    width: 300px;
+    /* Set a fixed width for the product boxes */
+    height: 400px;
+    /* Set a fixed height for the product boxes */
+    background-color: #fff;
+    /* Add background color to product boxes */
     border-radius: 8px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-    transition: transform 0.3s ease; /* Smooth transition on hover */
-    overflow: hidden; /* Prevent content from overflowing */
-    margin-bottom: 40px; /* Add margin to create space between product boxes */
-    margin-right: 27px; /* Add margin to create space between product boxes */
-    margin-left: 27px; /* Add margin to create space between product boxes */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    /* Add a subtle shadow */
+    transition: transform 0.3s ease;
+    /* Smooth transition on hover */
+    overflow: hidden;
+    /* Prevent content from overflowing */
+    margin-bottom: 40px;
+    /* Add margin to create space between product boxes */
+    margin-right: 27px;
+    /* Add margin to create space between product boxes */
+    margin-left: 27px;
+    /* Add margin to create space between product boxes */
     padding: 0;
 }
 
 .product-box:hover {
-    transform: translateY(-5px) scale(1.05); /* Add scale effect on hover */
+    transform: translateY(-5px) scale(1.05);
+    /* Add scale effect on hover */
 }
 
 .product-box img {
-    width: 100%; /* Ensure the image fills the product box */
-    height: 70%; /* Set the height of the image */
-    object-fit: cover; /* Maintain aspect ratio and cover the entire box */
+    width: 100%;
+    /* Ensure the image fills the product box */
+    height: 70%;
+    /* Set the height of the image */
+    object-fit: cover;
+    /* Maintain aspect ratio and cover the entire box */
     display: block;
-    border-bottom: 1px solid #eee; /* Add border to separate image from text */
+    border-bottom: 1px solid #eee;
+    /* Add border to separate image from text */
 }
 
-.product-name, .product-price {
+.product-name,
+.product-price {
     padding: 10px;
     margin: 0;
 }
@@ -116,14 +158,14 @@ main {
     align-items: center;
 }
 
-.product-box-footer{
+.product-box-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0px 12px;
 }
 
-.price-fav{
+.price-fav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -136,11 +178,14 @@ main {
     border: 2px solid #ccc;
     border-radius: 4px;
     background-color: #fff;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    /* Smooth transition */
 }
 
 #category-filter:hover {
-    border-color: #007bff; /* Change border color on hover */
+    border-color: #007bff;
+    /* Change border color on hover */
 }
 
 /* Buttons */
@@ -152,7 +197,8 @@ button {
     background-color: #007bff;
     color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Smooth transition */
+    transition: background-color 0.3s ease;
+    /* Smooth transition */
 }
 
 button:hover {
@@ -161,43 +207,49 @@ button:hover {
 
 /* Scrollbar */
 body::-webkit-scrollbar {
-    width: 8px; /* Width of the scrollbar */
-    background-color: transparent; /* Transparent background */
+    width: 8px;
+    /* Width of the scrollbar */
+    background-color: transparent;
+    /* Transparent background */
 }
 
 /* Handle */
 body::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black */
-    border-radius: 4px; /* Rounded corners */
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Semi-transparent black */
+    border-radius: 4px;
+    /* Rounded corners */
 }
 
 /* Handle on hover */
 body::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(0, 0, 0, 0.5); /* Darker color on hover */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Darker color on hover */
 }
 
 /* Track */
 body::-webkit-scrollbar-track {
-    background-color: transparent; /* Transparent track */
+    background-color: transparent;
+    /* Transparent track */
 }
 
-.favorite-button{
+.favorite-button {
     background-color: transparent;
     height: fit-content;
     width: fit-content;
     padding: 0 18px;
 }
 
-.favorite-button:hover{
+.favorite-button:hover {
     background-color: transparent;
 }
 
-.favorite-button i{
+.favorite-button i {
     font-size: 24px;
     color: red;
 }
 
-.moreBtn{
+.moreBtn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -206,7 +258,22 @@ body::-webkit-scrollbar-track {
     max-height: 43px;
 }
 
-.moreBtn a{
+.moreBtn a {
     text-decoration: none;
     color: #fff;
+}
+
+.resetBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    height: 40px;
+    width: 32px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.resetBtn i {
+    font-size: 20px;
+    font-weight: bolder;
 }

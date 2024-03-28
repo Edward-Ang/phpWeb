@@ -69,12 +69,13 @@ mysqli_close($conn);
     <main>
         <section id="product-listings">
             <div id="filter">
-                <form style="display: flex; align-items: center; width: fit-content">
-                    <input type="text" id="search-input" name="search" placeholder="Enter search keyword..." style="border: 1px solid #ccc; border-radius: 4px; padding: 8px; width: 150px; margin-right: 20px;">
-                    <div id="search-icon" style="cursor: pointer;" onclick="toggleSearchInput()">
+                <form class="searchForm" style="display: flex; align-items: center; width: fit-content">
+                    <input type="text" id="search-input" name="search" placeholder="Enter search keyword...">
+                    <button class="resetBtn" href='user_dashboard.php'><i class="bi bi-arrow-counterclockwise"></i></button>
+                    <!--<div id="search-icon" style="cursor: pointer;" onclick="toggleSearchInput()">
                         <p>Search
                             <img src="../uploads/magnifying_glass_icon.png" alt="Search" style="width: 20px; height: 20px;">
-                    </div>
+                    </div>-->
                 </form>
                 <select id="category-filter">
                     <option value="all">All Categories</option>
