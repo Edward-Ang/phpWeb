@@ -235,7 +235,7 @@ $conn->close();
             </table>
             <div class="total">
                 <span>Total Amount</span>
-                <span>RM <?php echo number_format($total_amount, 2); ?></span>
+                <span class="totalamount">RM <?php echo number_format($total_amount, 2); ?></span>
             </div>
         </section>
     </main>
@@ -302,7 +302,7 @@ if (!empty($unserialized_array)) {
         subtotals.forEach(function(subtotal) {
             totalAmount += parseFloat(subtotal.textContent.replace('RM ', ''));
         });
-        document.querySelector('.total').textContent = 'Total Amount: RM ' + totalAmount.toFixed(2);
+        document.querySelector('.totalamount').textContent = 'RM ' + totalAmount.toFixed(2);
     }
 
     function updateQuantity(input, productId) {
