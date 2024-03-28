@@ -3,16 +3,16 @@
 include 'db_connect.php';
 
 // Check if product_id is set in the POST request
-if (isset($_POST['product_id'])) {
+if (isset($_POST['order_id'])) {
     // Sanitize the product ID
-    $product_id = mysqli_real_escape_string($conn, $_POST['product_id']);
+    $order_id = mysqli_real_escape_string($conn, $_POST['order_id']);
 
     // Prepare SQL statement to delete the record
-    $sql = "DELETE FROM order_table WHERE p_id = ?";
+    $sql = "DELETE FROM order_table WHERE id = ?";
     
     // Prepare and bind parameters
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $product_id);
+    $stmt->bind_param("i", $order_id);
 
     // Execute the statement
     if ($stmt->execute()) {

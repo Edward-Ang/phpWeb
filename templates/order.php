@@ -204,6 +204,7 @@ $conn->close();
                         while ($row = mysqli_fetch_assoc($result)) {
                             echo "<tr>";
                             // Fetch product details from products table based on product ID
+                            $order_id = $row['id'];
                             $product_id = $row['p_id'];
                             $product_query = "SELECT * FROM products WHERE id = $product_id";
                             $product_result = mysqli_query($conn, $product_query);
@@ -220,7 +221,7 @@ $conn->close();
                                 $subtotal = $product_row['price'] * 1;
                                 $total_amount += $subtotal;
                                 echo "<td class='subtotal'>RM " . number_format($subtotal, 2) . "</td>";
-                                echo "<td><button class='dltBtn' onclick='deleteItem(this.parentNode.parentNode, $product_id)'><i class='fa-solid fa-trash'></i></button></td>";
+                                echo "<td><button class='dltBtn' onclick='deleteItem(this.parentNode.parentNode, $order_id)'><i class='fa-solid fa-trash'></i></button></td>";
                             }
                             echo "</tr>";
                         }
@@ -327,7 +328,7 @@ if (!empty($unserialized_array)) {
         xhr.send(formData);
     }
 
-    function deleteItem(row, productId) {
+    function deleteItem(row, orderId) {
         var confirmation = confirm("Are you sure you want to delete this item?");
         if (confirmation) {
             // Send an AJAX request to delete the item
@@ -349,7 +350,7 @@ if (!empty($unserialized_array)) {
             };
             xhr.open("POST", "delete_item.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.send("product_id=" + productId);
+            xhr.send("order_id=" + orderId);
         }
     }
 </script>
