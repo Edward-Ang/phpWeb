@@ -49,15 +49,34 @@ if (!empty($favorite_products)) {
 
             <main>
                 <section id="favorite-products">
-                    <h2>Favorite Products</h2>
+                    <div class="favorite-header">
+                        <span style="margin-bottom: 20px;">Favorite Products</span>
+                    </div>
                     <div id="product-grid">
                         <?php while ($row = mysqli_fetch_assoc($favorite_result)) : ?>
                             <div class="product-box">
+                                <img src="<?php echo $row['image']; ?>" alt="<?php echo $row['product_name']; ?>" class="product-image">
                                 <div class="product-name">
                                     <a href="product_details.php?id=<?php echo $row['id']; ?>"><?php echo $row['product_name']; ?></a>
                                 </div>
-                                <img src="<?php echo $row['image']; ?>" alt="<?php echo $row['product_name']; ?>" class="product-image">
-                                <div class="product-price">RM <?php echo $row['price']; ?></div>
+                                <div class="product-box-footer">
+                                    <div class="price-fav">
+                                        <span class="product-price">RM <?php echo $row['price']; ?></span>
+                                        <button class="favorite-button <?php echo (in_array($row['id'], $favorite_products) ? 'favorited' : ''); ?>" onclick="toggleFavorite(this, <?php echo $row['id']; ?>)">
+                                            <?php
+                                            $fav = (in_array($row['id'], $favorite_products) ? 'Unfavorite' : 'Favorite');
+                                            if ($fav == "Favorite") { ?>
+                                                <i class="bi bi-heart"></i>
+                                            <?php
+                                            } else { ?>
+                                                <i class="bi bi-heart-fill"></i>
+                                            <?php }
+                                            ?>
+                                        </button>
+                                    </div>
+                                    <button class="moreBtn"><a href="order.php?product_id=<?php echo $row['id']; ?>" class="button-link add-to-cart-button">Add to Cart</a>
+                                    </button>
+                                </div>
                             </div>
                         <?php endwhile; ?>
                     </div>

@@ -72,10 +72,6 @@ mysqli_close($conn);
                 <form class="searchForm" style="display: flex; align-items: center; width: fit-content">
                     <input type="text" id="search-input" name="search" placeholder="Enter search keyword...">
                     <button class="resetBtn" href='user_dashboard.php'><i class="bi bi-arrow-counterclockwise"></i></button>
-                    <!--<div id="search-icon" style="cursor: pointer;" onclick="toggleSearchInput()">
-                        <p>Search
-                            <img src="../uploads/magnifying_glass_icon.png" alt="Search" style="width: 20px; height: 20px;">
-                    </div>-->
                 </form>
                 <select id="category-filter">
                     <option value="all">All Categories</option>
@@ -116,20 +112,6 @@ mysqli_close($conn);
 
     <script src="../scripts/script.js"></script>
     <script>
-        function toggleSearchInput() {
-            var searchInput = document.getElementById('search-input');
-            var searchIcon = document.getElementById('search-icon');
-
-            if (searchInput.style.display === 'none') {
-                searchInput.style.display = 'inline-block';
-                searchIcon.style.display = 'none';
-                searchInput.focus(); // Focus on the search input when displayed
-            } else {
-                searchInput.style.display = 'none';
-                searchIcon.style.display = 'inline-block';
-            }
-        }
-
         function searchProducts(event) {
             // If Enter key is pressed (key code 13)
             if (event.keyCode === 13) {
