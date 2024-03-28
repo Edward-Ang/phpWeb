@@ -22,6 +22,17 @@ if (mysqli_num_rows($result) == 1) {
         $_SESSION['user_id'] = $row['id'];
         $_SESSION['username'] = $row['username'];
         $_SESSION['role'] = $row['role'];
+        
+        // Fetch and store user's favorite products in session
+        $user_id = $row['id'];
+        $favorites_query = "SELECT product_id FROM user_favorites WHERE user_id = '$user_id'";
+        $favorites_result = mysqli_query($conn, $favorites_query);
+        $favorite_products = [];
+        while ($fav_row = mysqli_fetch_assoc($favorites_result)) {
+            $favorite_products[] = $fav_row['product_id'];
+        }
+        $_SESSION['favorite_products'] = $favorite_products;
+
         // Redirect to appropriate page based on role
         if ($_SESSION['role'] == 'admin') {
             header("Location: admin_dashboard.php");

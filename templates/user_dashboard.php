@@ -93,8 +93,9 @@ mysqli_close($conn);
                         <div class="product-price">RM <?php echo $row['price']; ?></div>
                         <!-- Favorite button -->
                         <button class="favorite-button <?php echo (in_array($row['id'], $favorite_products) ? 'favorited' : ''); ?>" onclick="toggleFavorite(this, <?php echo $row['id']; ?>)">
-                            <?php echo (in_array($row['id'], $favorite_products) ? 'Unfavorite' : 'Favorite'); ?>
-                        </button>
+    <?php echo (in_array($row['id'], $favorite_products) ? 'Unfavorite' : 'Favorite'); ?>
+</button>
+
                     </div>
                 <?php endwhile; ?>
             </div>
@@ -129,26 +130,30 @@ mysqli_close($conn);
         }
 
         function toggleFavorite(button, productId) {
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'toggle_favorite.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        if (xhr.responseText === 'added') {
-                            button.textContent = 'Unfavorite';
-                            button.classList.add('favorited');
-                        } else if (xhr.responseText === 'removed') {
-                            button.textContent = 'Favorite';
-                            button.classList.remove('favorited');
-                        }
-                    } else {
-                        console.error('Toggle favorite request failed: ' + xhr.status);
-                    }
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'toggle_favorite.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                if (xhr.responseText === 'added') {
+                    button.textContent = 'Unfavorite';
+                    button.classList.add('favorited');
+                } else if (xhr.responseText === 'removed') {
+                    button.textContent = 'Favorite';
+                    button.classList.remove('favorited');
+                } else {
+                    console.error('Toggle favorite response not recognized');
                 }
-            };
-            xhr.send('product_id=' + encodeURIComponent(productId));
+            } else {
+                console.error('Toggle favorite request failed: ' + xhr.status);
+            }
         }
+    };
+    xhr.send('product_id=' + encodeURIComponent(productId));
+}
+
+
     </script>
 
 

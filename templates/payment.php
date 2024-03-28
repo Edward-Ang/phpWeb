@@ -263,6 +263,8 @@
                         </div>
                     </div>
                 </div>
+                <?php $dlt_sql = "DELETE FROM order_table WHERE user_id = '$user_id'";
+                $dlt_result = mysqli_Query($conn, $dlt_sql); ?>
             <?php
         }
     } else {

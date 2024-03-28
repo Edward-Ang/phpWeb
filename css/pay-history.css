@@ -43,6 +43,7 @@ th{
     background-color: rgb(198, 198, 198);
     border-bottom: 2px solid  var(--payment-border);
     border-bottom: 2px solid  var(--payment-border);
+    font-size: 16px;
 }
 
 td{
