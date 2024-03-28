@@ -60,6 +60,7 @@ $conn->close();
     <title>My cart</title>
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/order.css">
+    <script src="https://kit.fontawesome.com/d7d8d20a77.js" crossorigin="anonymous"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -79,7 +80,7 @@ $conn->close();
         main {
             max-width: 1200px;
             margin: 20px auto;
-            padding: 20px;
+            padding: 20px 20px 0px 20px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
@@ -98,6 +99,7 @@ $conn->close();
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-bottom: 20px;
         }
 
         th,
@@ -105,27 +107,7 @@ $conn->close();
             padding: 10px;
             text-align: left;
             border-bottom: 1px solid #ddd;
-        }
-
-        .quantity {
-            display: flex;
-            align-items: center;
-        }
-
-        .quantity input {
-            width: 50px;
-            text-align: center;
-            margin: 0 10px;
-        }
-
-        .subtotal {
-            font-weight: bold;
-        }
-
-        .total {
-            font-size: 20px;
-            color: #007bff;
-            font-weight: bold;
+            font-size: 16px;
         }
 
         .site-header {
@@ -169,22 +151,6 @@ $conn->close();
         .account {
             font-size: 18px;
             font-weight: bold;
-        }
-
-        .checkout-button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 4px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-
-        .checkout-button:hover {
-            background-color: #0056b3;
         }
     </style>
 </head>
@@ -244,7 +210,7 @@ $conn->close();
                             if ($product_result && mysqli_num_rows($product_result) == 1) {
                                 $product_row = mysqli_fetch_assoc($product_result);
                                 echo "<td>" . $product_row['product_name'] . "</td>";
-                                echo "<td>" . $product_row['description'] . "</td>";
+                                echo "<td class='description'>" . $product_row['description'] . "</td>";
                                 echo "<td>RM " . $product_row['price'] . "</td>";
                                 echo "<td class='quantity'>";
                                 echo "<button onclick='decrement(this, $product_id)'>&minus;</button>";
@@ -254,7 +220,7 @@ $conn->close();
                                 $subtotal = $product_row['price'] * 1;
                                 $total_amount += $subtotal;
                                 echo "<td class='subtotal'>RM " . number_format($subtotal, 2) . "</td>";
-                                echo "<td><button onclick='deleteItem(this.parentNode.parentNode, $product_id)'>Delete</button></td>";
+                                echo "<td><button class='dltBtn' onclick='deleteItem(this.parentNode.parentNode, $product_id)'><i class='fa-solid fa-trash'></i></button></td>";
                             }
                             echo "</tr>";
                         }
@@ -267,7 +233,10 @@ $conn->close();
                     ?>
                 </tbody>
             </table>
-            <p class="total">Total Amount: RM <?php echo number_format($total_amount, 2); ?></p>
+            <div class="total">
+                <span>Total Amount</span>
+                <span>RM <?php echo number_format($total_amount, 2); ?></span>
+            </div>
         </section>
     </main>
 </body>
