@@ -5,6 +5,7 @@
 
 .product-box a {
     text-decoration: none; /* Remove underline from links within product boxes */
+    color: #333;
 }
 
 /* Overall Layout */
@@ -12,7 +13,6 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4; /* Set a light background color */
 }
 
 header {
@@ -43,18 +43,21 @@ nav a:hover {
 }
 
 main {
-    padding: 40px 20px 20px; /* Add top padding to make space for fixed header */
+    padding: 30px 20px 30px 20px; /* Add top padding to make space for fixed header */
     margin-top: 60px; /* Add margin to prevent content from being hidden under header */
+    background-color: #f4f4f4;
 }
 
 /* Product Listings */
 #product-listings {
-    margin-top: 20px;
     overflow: hidden; /* Clear floats */
 }
 
 #filter {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 20px;
+    padding: 10px 30px;
 }
 
 /* Product Boxes Container */
@@ -70,11 +73,13 @@ main {
     height: 400px; /* Set a fixed height for the product boxes */
     background-color: #fff; /* Add background color to product boxes */
     border-radius: 8px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
     transition: transform 0.3s ease; /* Smooth transition on hover */
     overflow: hidden; /* Prevent content from overflowing */
     margin-bottom: 40px; /* Add margin to create space between product boxes */
-    margin-right: 60px; /* Add margin to create space between product boxes */
+    margin-right: 27px; /* Add margin to create space between product boxes */
+    margin-left: 27px; /* Add margin to create space between product boxes */
+    padding: 0;
 }
 
 .product-box:hover {
@@ -97,18 +102,38 @@ main {
 .product-name {
     font-size: 18px;
     color: #333;
+    font-weight: bold;
+    margin-bottom: 19px;
 }
 
 .product-price {
-    font-size: 16px;
-    color: #007bff;
+    padding: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-box-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 12px;
+}
+
+.price-fav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* Category Filter Dropdown */
 #category-filter {
-    padding: 10px 20px;
+    padding: 10px 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: 4px;
     background-color: #fff;
     transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
@@ -154,4 +179,34 @@ body::-webkit-scrollbar-thumb:hover {
 /* Track */
 body::-webkit-scrollbar-track {
     background-color: transparent; /* Transparent track */
+}
+
+.favorite-button{
+    background-color: transparent;
+    height: fit-content;
+    width: fit-content;
+    padding: 0 18px;
+}
+
+.favorite-button:hover{
+    background-color: transparent;
+}
+
+.favorite-button i{
+    font-size: 24px;
+    color: red;
+}
+
+.moreBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    padding: 12px 24px;
+    max-height: 43px;
+}
+
+.moreBtn a{
+    text-decoration: none;
+    color: #fff;
 }
