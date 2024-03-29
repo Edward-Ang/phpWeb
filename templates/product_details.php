@@ -82,7 +82,6 @@ mysqli_close($conn);
                     <span class="product-price">RM <?php echo $price; ?></span>
                     <div class="product-actions">
                         <a href="order.php?product_id=<?php echo $product_id; ?>" class="button-link add-to-cart-button">Add to Cart</a>
-                        <button onclick="buyNow(<?php echo $product_id; ?>)" class="buy-now-button">Buy Now</button>
                     </div>
                 </div>
             </div>
