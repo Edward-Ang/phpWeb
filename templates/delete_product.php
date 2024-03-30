@@ -18,16 +18,16 @@ if (isset($_GET['id'])) {
             unlink($image_path);
         }
         $_SESSION['success_message'] = "Product deleted successfully.";
-        header("Location: admin_dashboard.php");
+        header("Location: product_list.php");
         exit();
     } else {
         $_SESSION['error_message'] = "Error deleting product: " . mysqli_error($conn);
-        header("Location: admin_dashboard.php");
+        header("Location: product_list.php");
         exit();
     }
 } else {
     $_SESSION['error_message'] = "Product ID not provided.";
-    header("Location: admin_dashboard.php");
+    header("Location: product_list.php");
     exit();
 }
 ?>

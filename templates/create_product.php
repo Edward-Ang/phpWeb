@@ -25,11 +25,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $query = "INSERT INTO products (product_name, description, price, category, stock_level, image) VALUES ('$product_name', '$description', $price, '$category', $stock_level, '$image_path')";
     if (mysqli_query($conn, $query)) {
         $_SESSION['success_message'] = "Product created successfully.";
-        header("Location: admin_dashboard.php");
+        header("Location: product_list.php");
         exit();
     } else {
         $_SESSION['error_message'] = "Error creating product: " . mysqli_error($conn);
-        header("Location: admin_dashboard.php");
+        header("Location: product_list.php");
         exit();
     }
 }

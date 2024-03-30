@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+    font-size: 18px;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+.product-list-container {
+    padding: 30px;
+}
+
+.product-list-header {
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.product-list-header span {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 2px solid var(--payment-border);
+    border-bottom: none;
+    border-radius: 8px;
+}
+
+/* Adjust border radius for specific corners */
+table thead tr:first-child th:first-child {
+    border-radius: 6px 0 0 0; /* Top left corner */
+}
+
+table thead tr:first-child th:last-child {
+    border-radius: 0 6px 0 0; /* Top right corner */
+}
+
+table tbody tr:last-child td:first-child {
+    border-radius: 0 0 0 6px; /* Bottom left corner */
+}
+
+table tbody tr:last-child td:last-child {
+    border-radius: 0 0 6px 0; /* Bottom right corner */
+}
+
+th {
+    background-color: rgb(198, 198, 198);
+    border-bottom: 2px solid black;
+    font-size: 16px;
+    padding: 8px;
+    text-align: left;
+}
+
+td {
+    font-size: 16px;
+    border: 1px solid black;
+    border-top: 2px solid transparent;
+    padding: 8px;
+    text-align: left;
+}
+
+th:first-child {
+    width: 1%;
+    text-align: center;
+}
+
+th:nth-child(2){
+    text-align: center;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+    width: 10%;
+    text-align: center;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+    width: 10%;
+    text-align: center;
+}
+
+th:nth-child(5),
+td:nth-child(5) {
+    width: 10%;
+    text-align: center;
+}
+
+td:nth-child(6) {
+    text-align: center;
+}
+
+.product-list-container .add-btn {
+    width: 10%;
+    margin-top: 20px; /* Add 20px margin on top */
+    float: right; /* Align to the right */
+    background-color: lightgray; /* Set initial background color */
+    color: black; /* Set initial text color */
+    border: 1px solid black; /* Add border */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    padding: 10px; /* Add padding to create space between text and button edges */
+    transition: background-color 0.3s, color 0.3s; /* Add transition for smooth color change */
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.product-list-container .add-btn:hover {
+    cursor: pointer; /* Change cursor to hand */
+    background-color: greenyellow; /* Change background color on hover */
+}
+
+.product-list-container{
+    padding-bottom: 80px;
+}

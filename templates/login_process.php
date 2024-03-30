@@ -35,7 +35,8 @@ if (mysqli_num_rows($result) == 1) {
 
         // Redirect to appropriate page based on role
         if ($_SESSION['role'] == 'admin') {
-            header("Location: admin_dashboard.php");
+            //header("Location: admin_dashboard.php");
+            header("Location: admin_db.php");
         } else {
             header("Location: user_dashboard.php");
         }

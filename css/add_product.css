@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+    font-size: 18px;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.add-product-container {
+    max-width: 500px;
+    margin: 50px auto;
+    background: linear-gradient(to bottom right, black, #1f1e1e);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-product-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.add-product-header span {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.add-product-body {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    font-size: 16px;
+    color: white;
+}
+
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+textarea {
+    resize: none;
+}
+
+input[type="file"] {
+    margin-bottom: 8px; /* Add margin to the bottom */
+    color: white;
+}
+
+button[type="submit"] {
+    margin-top: 4px; /* Add margin to the top */
+    background-color: #327835;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.cancel-btn {
+    background-color: rgb(108, 108, 108);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    float: right;
+}
+
+.cancel-btn:hover {
+    background-color: rgb(202, 46, 46);
+    color: white;
+    transition: background-color 0.3s ease;
+}

@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
 
     if (!$result || mysqli_num_rows($result) == 0) {
         $_SESSION['error_message'] = "Product not found.";
-        header("Location: admin_dashboard.php");
+        header("Location: product_list.php");
         exit();
     }
 
@@ -54,43 +54,45 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     $query = "UPDATE products SET product_name = '$product_name', description = '$description', price = $price, category = '$category', stock_level = $stock_level, image = '$image_path' WHERE id = $product_id";
     if (mysqli_query($conn, $query)) {
         $_SESSION['success_message'] = "Product updated successfully.";
-        header("Location: admin_dashboard.php");
+        header("Location: product_list.php");
         exit();
     } else {
         $_SESSION['error_message'] = "Error updating product: " . mysqli_error($conn);
-        header("Location: admin_dashboard.php");
+        header("Location: product_list.php");
         exit();
     }
 } else {
     $_SESSION['error_message'] = "Invalid request.";
-    header("Location: admin_dashboard.php");
+    header("Location: product_list.php");
     exit();
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Product</title>
-</head>
-<body>
-    <h1>Edit Product</h1>
-    <form action="edit_product.php" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
-        <label for="product_name">Product Name:</label><br>
-        <input type="text" id="product_name" name="product_name" value="<?php echo $product_name; ?>" required><br>
-        <label for="description">Description:</label><br>
-        <textarea id="description" name="description" rows="4" cols="50" required><?php echo $description; ?></textarea><br>
-        <label for="price">Price:</label><br>
-        <input type="number" id="price" name="price" min="0" step="0.01" value="<?php echo $price; ?>" required><br>
-        <label for="category">Category:</label><br>
-        <input type="text" id="category" name="category" value="<?php echo $category; ?>"><br>
-        <label for="stock_level">Stock Level:</label><br>
-        <input type="number" id="stock_level" name="stock_level" min="0" value="<?php echo $stock_level; ?>" required><br>
-        <label for="image">Product Image:</label><br>
-        <input type="file" id="image" name="image"><br>
-        <button type="submit">Update Product</button>
-    </form>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Edit Product</title>
+        <link rel="stylesheet" href="../css/edit_product.css">
+    </head>
+    <body>
+        <h1>Edit Product</h1>
+        <form action="edit_product.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
+            <label for="product_name">Product Name:</label><br>
+            <input type="text" id="product_name" name="product_name" value="<?php echo $product_name; ?>" required><br>
+            <label for="description">Description:</label><br>
+            <textarea id="description" name="description" rows="4" cols="50" required><?php echo $description; ?></textarea><br>
+            <label for="price">Price:</label><br>
+            <input type="number" id="price" name="price" min="0" step="0.01" value="<?php echo $price; ?>" required><br>
+            <label for="category">Category:</label><br>
+            <input type="text" id="category" name="category" value="<?php echo $category; ?>"><br>
+            <label for="stock_level">Stock Level:</label><br>
+            <input type="number" id="stock_level" name="stock_level" min="0" value="<?php echo $stock_level; ?>" required><br>
+            <label for="image">Product Image:</label><br>
+            <input type="file" id="image" name="image"><br>
+            <button type="submit">Update Product</button>
+            <button type="button" class="cancel-btn" onclick="window.location.href='product_list.php'">Cancel</button>
+        </form>
+    </body>
 </html>
