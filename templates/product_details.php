@@ -56,7 +56,7 @@ mysqli_close($conn);
 <body>
     <header class="site-header">
         <div class="header-container">
-            <h1 class="site-title">Your Website</h1>
+            <h1 class="site-title">TechTrove</h1>
             <nav class="site-navigation">
                 <ul>
                     <li><a href="user_dashboard.php">Home</a></li>
